@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  ng-app="disasterApp">
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <script src="modules/angular/angular.min.js"></script>
 </head>
-<body>
+<body >
+<div ng-controller="reportController">
+<span>test</span>
+    <span data-ng-bind="bindingTest"></span>
+</div>
 
 </body>
+<script src="js/disasterApp.js"></script>
+<script src="js/controller/reportController.js"></script>
 </html>
