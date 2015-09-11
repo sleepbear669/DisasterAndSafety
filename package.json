@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.4.5",
     "node-static": "~0.7.1",
     "socket.io": "~0.9.16"
   }
