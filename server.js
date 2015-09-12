@@ -20,8 +20,6 @@ server.listen(webSocketsServerPort, function() {
 
 var io = require('socket.io').listen(server).sockets;
 io.on('connection', function (socket) {
-    console.log(socket.id);
-    socket.emit("message", "hello world");
     socket.on('event', function(data){});
     socket.on('disconnect', function(data){
         console.log("disconnet");

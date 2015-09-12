@@ -39,7 +39,6 @@ disasterApp.controller('reportController', function($scope, socket){
     var init = function () {
         pc.onaddstream = function (obj) {
             remoteVideo.src = window.URL.createObjectURL(obj.stream);
-            remoteVideo.play();
         };
         pc.onicecandidate = function (event) {
             if (!event || !event.candidate) return;
@@ -74,8 +73,5 @@ disasterApp.controller('reportController', function($scope, socket){
     });
     socket.on("complete", function (answer) {
         pc.setRemoteDescription(new RTCSessionDescription(answer));
-    });
-    socket.on("first", function(socket){
-        console.log(socket);
-    });
+    });0
 })
