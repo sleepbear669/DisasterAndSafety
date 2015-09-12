@@ -3,6 +3,8 @@
  */
 (function (app) {
     app.controller("counselorController", function($scope, socket){
-
+        socket.on("receive", function(rooms){
+            $scope.rooms = rooms;
+        })
     })
 })(disasterApp);

@@ -17,7 +17,7 @@ var webSocketsServerPort = 8080;
 server.listen(webSocketsServerPort, function() {
     console.log((new Date()) + " Server is listening on port " + webSocketsServerPort);
 });
-
+var rooms = {};
 var io = require('socket.io').listen(server).sockets;
 io.on('connection', function (socket) {
     socket.on('event', function(data){});
@@ -29,7 +29,9 @@ io.on('connection', function (socket) {
     });
     socket.on("report", function (room) {
         socket.roomId = room;
+        rooms[room] = "waiting";
         socket.join(room);
+        socket.broadcast.emit("receive", rooms);
     });
     socket.on('message', function (message) { });
     socket.on("offer", function (desc) {
