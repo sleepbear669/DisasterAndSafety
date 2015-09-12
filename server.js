@@ -27,6 +27,10 @@ io.on('connection', function (socket) {
             console.log(data);
         }
     });
+    socket.on("report", function (room) {
+        socket.roomId = room;
+        socket.join(room);
+    });
     socket.on('message', function (message) { });
     socket.on("offer", function (desc) {
         socket.broadcast.emit("offer", desc);
