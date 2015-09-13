@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular-route": "^1.4.5",
     "node-static": "~0.7.1",
     "socket.io": "^1.0.6"
   }
