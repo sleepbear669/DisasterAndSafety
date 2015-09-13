@@ -8,7 +8,8 @@
 </head>
 <body ng-controller="counselorController">
     <div class="room" data-ng-repeat="(roomId, status) in rooms">
-        <span data-ng-bind="roomId"></span>
+
+        <a href="#counsel/{{roomId}}"><span data-ng-bind="roomId"></span></a>
         <span data-ng-bind="status"></span>
     </div>
     <a data-ng-href="#counsel">상담</a>
@@ -18,4 +19,5 @@
 <script src="js/disasterApp.js"></script>
 <script src="js/service/socketService.js"></script>
 <script src="js/controller/counselorController.js"></script>
+<script src="js/controller/templateCounselCtrl.js"></script>
 </html>

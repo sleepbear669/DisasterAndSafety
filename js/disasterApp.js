@@ -8,6 +8,6 @@ disasterApp.config(['$routeProvider',
         $routeProvider.
             when('/counsel/:roomId', {
                 templateUrl: '/template/counsel.html',
-                controller: 'counselController'
+                controller: 'templateCounselCtrl'
             });
     }]);
