@@ -74,6 +74,6 @@
         });
         socket.on("complete", function (answer) {
             pc.setRemoteDescription(new RTCSessionDescription(answer));
-        });0
+        });
     })
-})(disasterApp)
+})(disasterApp);

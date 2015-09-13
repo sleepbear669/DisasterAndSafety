@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="modules/angular/angular.min.js"></script>
+    <script src="modules/angular-route/angular-route.min.js"></script>
 </head>
 <body ng-controller="counselorController">
     <div class="room" data-ng-repeat="(roomId, status) in rooms">
         <span data-ng-bind="roomId"></span>
         <span data-ng-bind="status"></span>
     </div>
+    <a data-ng-href="#counsel">상담</a>
+    <div data-ng-view></div>
 </body>
 <script src="modules/socket.io/socket.io.js"></script>
 <script src="js/disasterApp.js"></script>
