@@ -28,13 +28,13 @@
         };
 
         var pc = new webkitRTCPeerConnection(configuration);
-        navigator.getUserMedia({video: true, audio: false}, function (localMediaStream) {
+        navigator.getUserMedia({video: true, audio: true}, function (localMediaStream) {
             localVideo.src = window.URL.createObjectURL(localMediaStream);
             localVideoStream = localMediaStream;
             pc.addStream(localVideoStream);
             init();
-            var roomId = utill.randomString(7);
-            socket.emit("report", roomId);
+            $scope.roomId = utill.randomString(7);
+            socket.emit("report", $scope.roomId);
         }, errorCallback);
 
         var init = function () {
@@ -45,29 +45,20 @@
                 if (!event || !event.candidate) return;
                 socket.emit("icecandidate", event.candidate);
             };
-        }
-        $scope.start = function () {
-            console.log("strat");
+        };
+        socket.on("counselorJoin", function () {
             pc.createOffer(function (desc) {
                 pc.setLocalDescription(desc, function () {
                     localDesc = desc;
                     socket.emit("offer", desc);
                 });
             });
-        };
+        });
+
         socket.on("message", function (message) {
             if(message.type == "offer") {
                 remoteDecs = message;
             }
-
-        });
-        socket.on("offer", function(offer) {
-            remoteDecs = offer;
-            pc.setRemoteDescription(new RTCSessionDescription(offer));
-            pc.createAnswer(function (answer) {
-                pc.setLocalDescription(answer);
-                socket.emit("answer", answer);
-            });
         });
         socket.on("addCandidate", function (candidate) {
             pc.addIceCandidate(new RTCIceCandidate(candidate));

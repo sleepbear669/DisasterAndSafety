@@ -7,12 +7,12 @@
     <script src="modules/angular-route/angular-route.min.js"></script>
 </head>
 <body ng-controller="counselorController">
-    <div class="room" data-ng-repeat="(roomId, status) in rooms">
+    <div class="room" data-ng-repeat="(socketId, roomId) in rooms">
 
-        <a href="#counsel/{{roomId}}"><span data-ng-bind="roomId"></span></a>
+        <a href="#counsel/{{roomId}}"><span data-ng-bind="socketId"></span></a>
         <span data-ng-bind="status"></span>
     </div>
-    <a data-ng-href="#counsel">상담</a>
+    <a data-ng-href="#">상담</a>
     <div data-ng-view></div>
 </body>
 <script src="modules/socket.io/socket.io.js"></script>

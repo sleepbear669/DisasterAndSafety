@@ -9,5 +9,8 @@ disasterApp.config(['$routeProvider',
             when('/counsel/:roomId', {
                 templateUrl: '/template/counsel.html',
                 controller: 'templateCounselCtrl'
+            }).
+        otherwise('/', {
+                redirectTo : "/"
             });
     }]);
