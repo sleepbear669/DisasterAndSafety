@@ -9,34 +9,36 @@
         };
         var localDesc;
         var remoteDecs;
-        var localVideo = document.getElementById('local');
         var remoteVideo = document.getElementById('remote');
         var localVideoStream;
-        navigator.getUserMedia = navigator.getUserMedia ||
-            navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-        var configuration = {
-            "iceServers": [
-                {
-                    "url": "stun:mmt-stun.verkstad.net"
-                },
-                {
-                    "url": "turn:mmt-turn.verkstad.net",
-                    "username": "webrtc",
-                    "credential": "secret"
-                }
-            ]
-        };
+        var pc;
+        $scope.start = start;
+        function start() {
+            console.log("start");
+            navigator.getUserMedia = navigator.getUserMedia ||
+                navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+            var configuration = {
+                "iceServers": [
+                    {
+                        "url": "stun:mmt-stun.verkstad.net"
+                    },
+                    {
+                        "url": "turn:mmt-turn.verkstad.net",
+                        "username": "webrtc",
+                        "credential": "secret"
+                    }
+                ]
+            };
 
-        var pc = new webkitRTCPeerConnection(configuration);
-        navigator.getUserMedia({video: true, audio: true}, function (localMediaStream) {
-            localVideo.src = window.URL.createObjectURL(localMediaStream);
-            localVideoStream = localMediaStream;
-            pc.addStream(localVideoStream);
-            init();
-            $scope.roomId = utill.randomString(7);
-            socket.emit("report", $scope.roomId);
-        }, errorCallback);
-
+            pc = new webkitRTCPeerConnection(configuration);
+            navigator.getUserMedia({video: true, audio: true}, function (localMediaStream) {
+                localVideoStream = localMediaStream;
+                pc.addStream(localVideoStream);
+                init();
+                $scope.roomId = utill.randomString(7);
+                socket.emit("report", $scope.roomId);
+            }, errorCallback);
+        }
         var init = function () {
             pc.onaddstream = function (obj) {
                 remoteVideo.src = window.URL.createObjectURL(obj.stream);

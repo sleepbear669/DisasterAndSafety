@@ -5,14 +5,69 @@
     <title></title>
     <script src="modules/angular/angular.min.js"></script>
     <script src="modules/angular-route/angular-route.min.js"></script>
+    <style>
+        .screen {
+            display: inline-block;
+            width:70%;
+            max-width:1024px;
+            min-width: 300px;
+            position: relative;
+            border: 1px solid black;
+        }
+        #remote {
+            width: 100%;4
+            max-width: 1024px;
+        }
+        .sirens {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 30%;
+            margin-left: -15%;
+        }
+        .advice {
+            display: inline-block;
+        }
+    </style>
 </head>
 <body >
 <div ng-controller="reportController">
-<span>test</span>
-    <video id="local" autoplay controls></video>
-    <video id="remote" autoplay controls></video>
-    <span data-ng-bind="bindingTest"></span>
-    <button data-ng-click="start()">눌셈</button>
+    <div class="content-container">
+        <div class="screen">
+            <video id="remote" autoplay ></video>
+            <button data-ng-click="start()"><img class="sirens"  src="resources/image/sirens.jpeg" alt="사이렌"></button>
+        </div>
+        <div class="situation-menu">
+            <ul>
+                <li>지진</li>
+                <li>화재</li>
+                <li>붕괴</li>
+                <li>응급처지</li>
+            </ul>
+        </div>
+        <div class="advice-box">
+            <article class="advice">의식을 잃었을때(기도확보)
+                옆으로 눕혀 몸이 흔들리지 않도록 하면서 위로 향한 쪽의 무릎을 약간 앞으로 굽혀 줍니다 팔은 자연스런 위치에 놓고 베개는 하지 않고 턱은 약간 앞으로 나오게 해줍니다.
+                기도 확보는 목의 뒤쪽에 손을 대고 턱을 들어 올려 머리를 뒤로 젖히는데(두부후굴법), 이 방법으로 했을 때 잘 되지 않거나 인공 호흡을 실시할 때에는 어깨밑에 두께 20cm 정도 되는 베개(쿠션, 수건도 가능)를 놓고 머리를 뒤로 젖히게 해도 됩니다.
+            </article>
+            <article class="advice">
+                의식을 잃었을때(기도확보)
+                옆으로 눕혀 몸이 흔들리지 않도록 하면서 위로 향한 쪽의 무릎을 약간 앞으로 굽혀 줍니다 팔은 자연스런 위치에 놓고 베개는 하지 않고 턱은 약간 앞으로 나오게 해줍니다.
+                기도 확보는 목의 뒤쪽에 손을 대고 턱을 들어 올려 머리를 뒤로 젖히는데(두부후굴법), 이 방법으로 했을 때 잘 되지 않거나 인공 호흡을 실시할 때에는 어깨밑에 두께 20cm 정도 되는 베개(쿠션, 수건도 가능)를 놓고 머리를 뒤로 젖히게 해도 됩니다.
+            </article>
+            <article class="advice">
+                의식을 잃었을때(기도확보)
+                옆으로 눕혀 몸이 흔들리지 않도록 하면서 위로 향한 쪽의 무릎을 약간 앞으로 굽혀 줍니다 팔은 자연스런 위치에 놓고 베개는 하지 않고 턱은 약간 앞으로 나오게 해줍니다.
+                기도 확보는 목의 뒤쪽에 손을 대고 턱을 들어 올려 머리를 뒤로 젖히는데(두부후굴법), 이 방법으로 했을 때 잘 되지 않거나 인공 호흡을 실시할 때에는 어깨밑에 두께 20cm 정도 되는 베개(쿠션, 수건도 가능)를 놓고 머리를 뒤로 젖히게 해도 됩니다.
+            </article>
+            <article class="advice">
+                의식을 잃었을때(기도확보)
+                옆으로 눕혀 몸이 흔들리지 않도록 하면서 위로 향한 쪽의 무릎을 약간 앞으로 굽혀 줍니다 팔은 자연스런 위치에 놓고 베개는 하지 않고 턱은 약간 앞으로 나오게 해줍니다.
+                기도 확보는 목의 뒤쪽에 손을 대고 턱을 들어 올려 머리를 뒤로 젖히는데(두부후굴법), 이 방법으로 했을 때 잘 되지 않거나 인공 호흡을 실시할 때에는 어깨밑에 두께 20cm 정도 되는 베개(쿠션, 수건도 가능)를 놓고 머리를 뒤로 젖히게 해도 됩니다.
+            </article>
+        </div>
+
+    </div>
 </div>
 
 </body>
