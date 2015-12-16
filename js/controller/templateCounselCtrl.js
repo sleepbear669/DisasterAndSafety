@@ -28,7 +28,7 @@
 
         var pc;
         navigator.getUserMedia({video: true, audio: false}, function (localMediaStream) {
-            pc = new RTCPeerConnection(configuration);
+            pc = new webkitRTCPeerConnection(configuration);
             localVideo.src = window.URL.createObjectURL(localMediaStream);
             localVideoStream = localMediaStream;
             pc.addStream(localVideoStream);

@@ -30,7 +30,7 @@
                 ]
             };
 
-            pc = new RTCPeerConnection(configuration);
+            pc = new webkitRTCPeerConnection(configuration);
             navigator.getUserMedia({video: true, audio: true}, function (localMediaStream) {
                 localVideoStream = localMediaStream;
                 pc.addStream(localVideoStream);
