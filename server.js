@@ -6,15 +6,19 @@
  */
 var os = require('os');
 var static = require('node-static');
-var http = require('http');
+var https = require('https');
+var fs = require('fs');
+var webSocketsServerPort = 8080;
 
+var options = {
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem')
+};
 
 var fileServer = new(static.Server)();
-var server = http.createServer(function(request, reponse){
-    fileServer.serve(request, reponse);
-});
-var webSocketsServerPort = 8080;
-server.listen(webSocketsServerPort, function() {
+var server = https.createServer(options, function(request, response){
+    fileServer.serve(request, response);
+}).listen(webSocketsServerPort, function() {
     console.log((new Date()) + " Server is listening on port " + webSocketsServerPort);
 });
 var rooms = {};
