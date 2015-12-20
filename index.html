@@ -2,20 +2,36 @@
 <html lang="en"  ng-app="disasterApp">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width"/>
     <title></title>
     <script src="modules/angular/angular.min.js"></script>
     <script src="modules/angular-route/angular-route.min.js"></script>
     <style>
+        ul{
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            color: white;
+            background-color: #E3CBAF;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
         .screen {
             display: inline-block;
-            width:70%;
-            max-width:1024px;
-            min-width: 300px;
             position: relative;
+            float: left;
             border: 1px solid black;
+            background-color: #F8F5EC;
+
         }
         #remote {
-            width: 100%;4
+            width: 100%;
             max-width: 1024px;
         }
         .sirens {
@@ -26,47 +42,327 @@
             margin-left: -15%;
         }
         .advice {
-            display: inline-block;
+
+        }
+        .one{
+            background-color: #EE807E;
+        }
+        .two{
+            background-color: #B5D045;
+        }
+        .three{
+            background-color: #449596;
+        }
+        .four{
+            background-color: #FB8336;
+        }
+        .move-top {
+            position: fixed;
+            left:90%;
+            top: 90%;
+            background-color: #FFCBAF;
+        }
+        .advice:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        @media (min-width: 360px) {
+            a{
+                overflow: hidden;
+            }
+            .screen{
+                float: none;
+                margin-left:20px;
+            }
+            .situation-menu ul{
+                margin-left: 5px;
+            }
+
+            #cpr{
+                padding-top:10px;
+            }
+
+            #organ{
+                margin-top: 10px;
+                padding-top:10px;
+            }
+            #cpr img{
+                float: left;
+                width:50%;
+                height: 200px;
+            }
+            .situation-menu ul:after{
+                content: '';
+                display: block;
+                clear: both;
+            }
+            .situation-menu ul li{
+                float: left;
+                margin-left: 10px;
+                margin-bottom: 5px;
+                width: 30px;
+                height: 30px;
+                border-radius: 100%;
+                line-height: 30px;
+                text-align:center;
+                font-size: 7px;
+            }
+            #organ img,#aed img, #fire img, #shock img, #insect img{
+                width: 100%;
+            }
+            #aed , #fire, #shock, #burn{
+                padding-top:5px;
+            }
+            #burn img{
+                margin-left: 80px;
+            }
+
+        }
+        @media (min-width: 1080px) {
+            .screen{
+                margin-left: 20px;
+                width:75%;
+            }
+            .situation-menu:after{
+                content: '';
+                display: block;
+                clear: both;
+            }
+            .situation-menu ul{
+                margin-left: 30px;
+                float: left;
+            }
+            .situation-menu ul:after{
+                content: '';
+                display: block;
+                clear: both;
+            }
+            .situation-menu ul li{
+                float: left;
+                margin-left: 20px;
+                margin-bottom: 20px;
+                width: 90px;
+                height: 90px;
+                border-radius: 100%;
+                line-height: 90px;
+                text-align:center;
+            }
+
+            .situation-menu ul li:nth-child(2n + 1 ){
+                clear: both;
+            }
+             ol {
+                float: left;
+            }
+            #cpr .image-list li {
+                float: left;
+            }
+            #cpr ol{
+                margin-right: 50px;
+            }
+            #cpr ol li{
+                margin-bottom:10px;
+            }
+            #cpr .image-list li img{
+                width: 150px;
+                height: 200px;
+            }
+            #aed img{
+                width: 300px;
+            }
+            .adult{
+                float: left;
+                margin: 0 50px 0 50px;
+            }
+
+            #aed img{
+
+            }
+            #fire{
+                float: left;
+
+                display: inline-block;
+            }
+            #burn{
+                width: 300px;
+                float: left;
+            }
+            #shock {
+                float: left;
+            }
+            #shock .text-list{
+                float: none;
+
+            }
+            #shock:after{
+                content: '';
+                display: block;
+                clear: both;
+            }
+            #insect{
+                float: left;
+            }
         }
     </style>
 </head>
-<body >
+<body id="main">
 <div ng-controller="reportController">
     <div class="content-container">
         <div class="screen">
             <video id="remote" autoplay ></video>
-            <button data-ng-click="start()"><img class="sirens"  src="resources/image/sirens.jpeg" alt="사이렌"></button>
+            <div data-ng-click="start()"><img class="sirens"  src="resources/image/sirens.jpeg" alt="사이렌"></div>
         </div>
         <div class="situation-menu">
             <ul>
-                <li>지진</li>
-                <li>화재</li>
-                <li>붕괴</li>
-                <li>응급처지</li>
+                <li class="one"><a href="#cpr">심폐소생술 </a></li>
+                <li class="two"><a href="#organ">기도막힘</a></li>
+                <li class="three"><a href="#aed">AED </a></li>
+                <li class="four"><a href="#fire">소화기 사용</a></li>
+                <li class="one"><a href="#electric">감전사고</a></li>
+                <li class="two"><a href="#burn">화상응급처치</a></li>
+                <li class="three"><a href="#shock">쇼크 상황</a></li>
+                <li class="four"><a href="#insect">곤충,동물물림</a></li>
             </ul>
         </div>
         <div class="advice-box">
-            <article class="advice">의식을 잃었을때(기도확보)
-                옆으로 눕혀 몸이 흔들리지 않도록 하면서 위로 향한 쪽의 무릎을 약간 앞으로 굽혀 줍니다 팔은 자연스런 위치에 놓고 베개는 하지 않고 턱은 약간 앞으로 나오게 해줍니다.
-                기도 확보는 목의 뒤쪽에 손을 대고 턱을 들어 올려 머리를 뒤로 젖히는데(두부후굴법), 이 방법으로 했을 때 잘 되지 않거나 인공 호흡을 실시할 때에는 어깨밑에 두께 20cm 정도 되는 베개(쿠션, 수건도 가능)를 놓고 머리를 뒤로 젖히게 해도 됩니다.
+            <article id="cpr" class="advice one">
+                <div class="treat-text-box">
+                    <ol class="text-list">
+                        <li>의식 확인</li>
+                        <li>도움 및 119요청</li>
+                        <li>손깍지를 낀 채 가슴압박 30회, 양팔은 수직상태</li>
+                        <li>인공호흡 2회 실시(목을 젖혀 기도개방, 코를 막고</li>
+                        <li>반복(119 도착 시, 상태 회복 시 까지)</li>
+                        <li>환자의 상태가 회복되면 환자를 옆을 돌려 기도 막힘 방지</li>
+                    </ol>
+                </div>
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/심폐1.bmp" alt=""></li>
+                        <li><img src="resources/image/심폐2.bmp" alt=""></li>
+                        <li><img src="resources/image/심폐3.bmp" alt=""></li>
+                        <li><img src="resources/image/심폐4.bmp" alt=""></li>
+                        <li><img src="resources/image/심폐5.bmp" alt=""></li>
+                    </ul>
+                </div>
             </article>
-            <article class="advice">
-                의식을 잃었을때(기도확보)
-                옆으로 눕혀 몸이 흔들리지 않도록 하면서 위로 향한 쪽의 무릎을 약간 앞으로 굽혀 줍니다 팔은 자연스런 위치에 놓고 베개는 하지 않고 턱은 약간 앞으로 나오게 해줍니다.
-                기도 확보는 목의 뒤쪽에 손을 대고 턱을 들어 올려 머리를 뒤로 젖히는데(두부후굴법), 이 방법으로 했을 때 잘 되지 않거나 인공 호흡을 실시할 때에는 어깨밑에 두께 20cm 정도 되는 베개(쿠션, 수건도 가능)를 놓고 머리를 뒤로 젖히게 해도 됩니다.
+
+            <article id="organ" class="advice two">
+                <div class="adult">
+                    <div class="treat-text-box">
+                        <ol class="text-list">
+                            <li>상태 확인 후 119 신고</li>
+                            <li>자발적인 기침유도, 기침을 못할 경우 복부 밀어내기 시행</li>
+                            <li>배꼽과 명치 중간에서 오른손으로 왼주먹을 감싸고 안쪽에서 위로 강하게 밀어냄</li>
+                        </ol>
+                    </div>
+                    <div class="treat-image-box">
+                        <ul class="image-list">
+                            <li><img src="resources/image/기도.bmp" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="young">
+                    <div class="treat-text-box">
+                        <ol class="text-list">
+                            <li>손가락으로 발바닥을 건드려 상태 확인 후 119 신고 </li>
+                            <li>얼굴을 아래로 향하게 한 뒤 손 뛰꿈치로 등 압박 5회 </li>
+                            <li>아래로 머리 기울인 채 가슴 중앙을 약 4cm 깊이로 5회 압박</li>
+                            <li>이물질이 나왔는지 확인 후 등압박과 가슴압박 반복 시행 </li>
+                        </ol>
+                    </div>
+                    <div class="treat-image-box">
+                        <ul class="image-list">
+                            <li><img src="resources/image/기도%20영아.bmp" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
             </article>
-            <article class="advice">
-                의식을 잃었을때(기도확보)
-                옆으로 눕혀 몸이 흔들리지 않도록 하면서 위로 향한 쪽의 무릎을 약간 앞으로 굽혀 줍니다 팔은 자연스런 위치에 놓고 베개는 하지 않고 턱은 약간 앞으로 나오게 해줍니다.
-                기도 확보는 목의 뒤쪽에 손을 대고 턱을 들어 올려 머리를 뒤로 젖히는데(두부후굴법), 이 방법으로 했을 때 잘 되지 않거나 인공 호흡을 실시할 때에는 어깨밑에 두께 20cm 정도 되는 베개(쿠션, 수건도 가능)를 놓고 머리를 뒤로 젖히게 해도 됩니다.
+
+            <article id="aed" class="advice three">
+                <div class="treat-text-box">
+                    <ol class="text-list">
+                        <li>전원버튼을 누른다.</li>
+                        <li>전극패드를 꺼낸다</li>
+                        <li>환자의 상의를 탈의한다.</li>
+                        <li>전극패드 부착(RA:오른쪽 가슴 상단 , LL 심장아래)</li>
+                        <li>반복(119 도착 시, 상태 회복 시 까지)</li>
+                        <li>음성안내에 따른다.</li>
+                    </ol>
+                </div>
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/AEDe.bmp" alt=""></li>
+                    </ul>
+                </div>
             </article>
-            <article class="advice">
-                의식을 잃었을때(기도확보)
-                옆으로 눕혀 몸이 흔들리지 않도록 하면서 위로 향한 쪽의 무릎을 약간 앞으로 굽혀 줍니다 팔은 자연스런 위치에 놓고 베개는 하지 않고 턱은 약간 앞으로 나오게 해줍니다.
-                기도 확보는 목의 뒤쪽에 손을 대고 턱을 들어 올려 머리를 뒤로 젖히는데(두부후굴법), 이 방법으로 했을 때 잘 되지 않거나 인공 호흡을 실시할 때에는 어깨밑에 두께 20cm 정도 되는 베개(쿠션, 수건도 가능)를 놓고 머리를 뒤로 젖히게 해도 됩니다.
+            <article id="fire" class="advice four">
+                <div class="treat-text-box">
+                    <ol class="text-list">
+                        <li>소화기를 바닥에 두고 안전핀을 뽑는다.</li>
+                        <li>바람을 뒤로하고 소화기 호스를 불이 난 쪽으로 향하게 한다.</li>
+                        <li>손잡이를 꽉 잡고 불을 향해 소화액을 뿌린다.</li>
+                    </ol>
+                </div>
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/소화기.bmp" alt=""></li>
+                    </ul>
+                </div>
+            </article>
+            <article id="electric" class="advice one">
+                <div class="treat-text-box">
+                    <ol class="text-list">
+                        <li>기기의 전원을 차단하고 피해자 구출</li>
+                        <li>기도를 확보 한다.</li>
+                        <li>심폐소생술을 실행한다.</li>
+                    </ol>
+                </div>
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/감전시.jpeg" alt=""></li>
+                    </ul>
+                </div>
+            </article>
+            <article id="burn" class="advice two">
+                <div class="treat-text-box">
+                    <ol class="text-list">
+                        <li>열에 손실된 옷을 제거 후,</li>
+                        <li>깨끗한 수건을 상처부위 위에 덮은 뒤 시원한 물로 손상부위 소독</li>
+                        <li>통증이 호전될 때 까지 물로 소독한다.</li>
+                    </ol>
+                </div>
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/화상.bmp" alt=""></li>
+                    </ul>
+                </div>
+            </article>
+            <article id="shock" class="advice three">
+                <div class="treat-text-box">
+                    <ol class="text-list">
+                        <li>환자의 옷 단추, 허리띠 등을 풀거나 늦추어준다.</li>
+                        <li>환자의 다리를 들어 올리도록 해 혈액순환을 돕는다.</li>
+                    </ol>
+                </div>
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/쇼크.bmp" alt=""></li>
+                    </ul>
+                </div>
+            </article>
+            <article id="insect" class="advice four">
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/동물곤충.bmp" alt=""></li>
+                    </ul>
+                </div>
             </article>
         </div>
-
+        <div class="move-top">
+            <span><a href="#main">TOP</a></span>
+        </div>
     </div>
 </div>
 
