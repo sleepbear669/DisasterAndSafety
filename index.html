@@ -67,7 +67,7 @@
             display: block;
             clear: both;
         }
-        @media (min-width: 360px) {
+        @media (min-width: 360px ) and (max-width: 1000px) {
             a{
                 overflow: hidden;
             }
@@ -120,6 +120,9 @@
 
         }
         @media (min-width: 1080px) {
+            #remote{
+                height: 450px;
+            }
             .screen{
                 margin-left: 20px;
                 width:75%;
@@ -152,56 +155,26 @@
             .situation-menu ul li:nth-child(2n + 1 ){
                 clear: both;
             }
-             ol {
+            article{
+                margin-left: 25%;
+                width: 50%;
+            }
+            #cpr img{
+                width: 50%;
                 float: left;
-            }
-            #cpr .image-list li {
-                float: left;
-            }
-            #cpr ol{
-                margin-right: 50px;
-            }
-            #cpr ol li{
-                margin-bottom:10px;
-            }
-            #cpr .image-list li img{
-                width: 150px;
                 height: 200px;
             }
-            #aed img{
-                width: 300px;
+            #cpr .image-list{
+                overflow: hidden;
             }
-            .adult{
-                float: left;
-                margin: 0 50px 0 50px;
+            #cpr .text-list{
+                margin-left: 15%;
             }
-
-            #aed img{
-
+            article img{
+                width: 100%;
             }
-            #fire{
-                float: left;
-
-                display: inline-block;
-            }
-            #burn{
-                width: 300px;
-                float: left;
-            }
-            #shock {
-                float: left;
-            }
-            #shock .text-list{
-                float: none;
-
-            }
-            #shock:after{
-                content: '';
-                display: block;
-                clear: both;
-            }
-            #insect{
-                float: left;
+            #burn img {
+                height: 300px;
             }
         }
     </style>
@@ -211,7 +184,7 @@
     <div class="content-container">
         <div class="screen">
             <video id="remote" autoplay ></video>
-            <div data-ng-click="start()"><img class="sirens"  src="resources/image/sirens.jpeg" alt="사이렌"></div>
+            <div data-ng-click="start()" data-ng-hide="isConnect"><img class="sirens"  src="resources/image/sirens.jpeg" alt="사이렌"></div>
         </div>
         <div class="situation-menu">
             <ul>
@@ -227,6 +200,15 @@
         </div>
         <div class="advice-box">
             <article id="cpr" class="advice one">
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/심폐1.bmp" alt=""></li>
+                        <li><img src="resources/image/심폐2.bmp" alt=""></li>
+                        <li><img src="resources/image/심폐3.bmp" alt=""></li>
+                        <li><img src="resources/image/심폐4.bmp" alt=""></li>
+                        <li><img src="resources/image/심폐5.bmp" alt=""></li>
+                    </ul>
+                </div>
                 <div class="treat-text-box">
                     <ol class="text-list">
                         <li>의식 확인</li>
@@ -237,19 +219,15 @@
                         <li>환자의 상태가 회복되면 환자를 옆을 돌려 기도 막힘 방지</li>
                     </ol>
                 </div>
-                <div class="treat-image-box">
-                    <ul class="image-list">
-                        <li><img src="resources/image/심폐1.bmp" alt=""></li>
-                        <li><img src="resources/image/심폐2.bmp" alt=""></li>
-                        <li><img src="resources/image/심폐3.bmp" alt=""></li>
-                        <li><img src="resources/image/심폐4.bmp" alt=""></li>
-                        <li><img src="resources/image/심폐5.bmp" alt=""></li>
-                    </ul>
-                </div>
             </article>
 
             <article id="organ" class="advice two">
                 <div class="adult">
+                    <div class="treat-image-box">
+                        <ul class="image-list">
+                            <li><img src="resources/image/기도.bmp" alt=""></li>
+                        </ul>
+                    </div>
                     <div class="treat-text-box">
                         <ol class="text-list">
                             <li>상태 확인 후 119 신고</li>
@@ -257,13 +235,13 @@
                             <li>배꼽과 명치 중간에서 오른손으로 왼주먹을 감싸고 안쪽에서 위로 강하게 밀어냄</li>
                         </ol>
                     </div>
-                    <div class="treat-image-box">
-                        <ul class="image-list">
-                            <li><img src="resources/image/기도.bmp" alt=""></li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="young">
+                    <div class="treat-image-box">
+                        <ul class="image-list">
+                            <li><img src="resources/image/기도%20영아.bmp" alt=""></li>
+                        </ul>
+                    </div>
                     <div class="treat-text-box">
                         <ol class="text-list">
                             <li>손가락으로 발바닥을 건드려 상태 확인 후 119 신고 </li>
@@ -272,15 +250,15 @@
                             <li>이물질이 나왔는지 확인 후 등압박과 가슴압박 반복 시행 </li>
                         </ol>
                     </div>
-                    <div class="treat-image-box">
-                        <ul class="image-list">
-                            <li><img src="resources/image/기도%20영아.bmp" alt=""></li>
-                        </ul>
-                    </div>
                 </div>
             </article>
 
             <article id="aed" class="advice three">
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/AEDe.bmp" alt=""></li>
+                    </ul>
+                </div>
                 <div class="treat-text-box">
                     <ol class="text-list">
                         <li>전원버튼을 누른다.</li>
@@ -291,13 +269,13 @@
                         <li>음성안내에 따른다.</li>
                     </ol>
                 </div>
-                <div class="treat-image-box">
-                    <ul class="image-list">
-                        <li><img src="resources/image/AEDe.bmp" alt=""></li>
-                    </ul>
-                </div>
             </article>
             <article id="fire" class="advice four">
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/소화기.bmp" alt=""></li>
+                    </ul>
+                </div>
                 <div class="treat-text-box">
                     <ol class="text-list">
                         <li>소화기를 바닥에 두고 안전핀을 뽑는다.</li>
@@ -305,13 +283,13 @@
                         <li>손잡이를 꽉 잡고 불을 향해 소화액을 뿌린다.</li>
                     </ol>
                 </div>
-                <div class="treat-image-box">
-                    <ul class="image-list">
-                        <li><img src="resources/image/소화기.bmp" alt=""></li>
-                    </ul>
-                </div>
             </article>
             <article id="electric" class="advice one">
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/감전시.jpeg" alt=""></li>
+                    </ul>
+                </div>
                 <div class="treat-text-box">
                     <ol class="text-list">
                         <li>기기의 전원을 차단하고 피해자 구출</li>
@@ -319,13 +297,13 @@
                         <li>심폐소생술을 실행한다.</li>
                     </ol>
                 </div>
-                <div class="treat-image-box">
-                    <ul class="image-list">
-                        <li><img src="resources/image/감전시.jpeg" alt=""></li>
-                    </ul>
-                </div>
             </article>
             <article id="burn" class="advice two">
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/화상.bmp" alt=""></li>
+                    </ul>
+                </div>
                 <div class="treat-text-box">
                     <ol class="text-list">
                         <li>열에 손실된 옷을 제거 후,</li>
@@ -333,23 +311,18 @@
                         <li>통증이 호전될 때 까지 물로 소독한다.</li>
                     </ol>
                 </div>
-                <div class="treat-image-box">
-                    <ul class="image-list">
-                        <li><img src="resources/image/화상.bmp" alt=""></li>
-                    </ul>
-                </div>
             </article>
             <article id="shock" class="advice three">
+                <div class="treat-image-box">
+                    <ul class="image-list">
+                        <li><img src="resources/image/쇼크.bmp" alt=""></li>
+                    </ul>
+                </div>
                 <div class="treat-text-box">
                     <ol class="text-list">
                         <li>환자의 옷 단추, 허리띠 등을 풀거나 늦추어준다.</li>
                         <li>환자의 다리를 들어 올리도록 해 혈액순환을 돕는다.</li>
                     </ol>
-                </div>
-                <div class="treat-image-box">
-                    <ul class="image-list">
-                        <li><img src="resources/image/쇼크.bmp" alt=""></li>
-                    </ul>
                 </div>
             </article>
             <article id="insect" class="advice four">

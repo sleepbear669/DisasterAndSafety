@@ -12,9 +12,10 @@
         var remoteVideo = document.getElementById('remote');
         var localVideoStream;
         var pc;
+        $scope.isConnect = false;
+
         $scope.start = start;
         function start() {
-            console.log("start");
             navigator.getUserMedia = navigator.getUserMedia ||
                 navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
             var configuration = {
@@ -49,6 +50,7 @@
             };
         };
         socket.on("counselorJoin", function () {
+            $scope.isConnect = true;
             pc.createOffer(function (desc) {
                 pc.setLocalDescription(desc, function () {
                     localDesc = desc;

@@ -5,15 +5,73 @@
     <title></title>
     <script src="modules/angular/angular.min.js"></script>
     <script src="modules/angular-route/angular-route.min.js"></script>
-</head>
-<body ng-controller="counselorController">
-    <div class="room" data-ng-repeat="(socketId, roomId) in rooms">
+    <style>
+        body{
+            background-color: #E3CBAF;
+        }
+        ul{
+            list-style: none;
+        }
+        .content-container{
+            margin-left:80px;
 
-        <a href="#counsel/{{roomId}}"><span data-ng-bind="socketId"></span></a>
-        <span data-ng-bind="status"></span>
+        }
+        .content-container:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .left-content{
+            margin-right: 15px;
+            float: left;
+            width:15%;
+            background-color: #F4F4F4;
+
+        }
+        .right-content{
+            float: left;
+            width:80%;
+            padding-left: 10px;
+
+        }
+        .right-content:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        #local{
+            margin-right: 15px;
+            float: left;
+            width: 25%;
+            background-color: #F4F4F4;
+        }
+        #remote {
+            float: left;
+            width: 70%;
+            background-color: #F4F4F4;
+
+        }
+        .report-list li{
+            width: 100px;
+        }
+        .report-list li span{
+        }
+    </style>
+</head>
+<body data-ng-controller="counselorController">
+<div class="content-container">
+    <div class="left-content">
+        <div class="room" data-ng-repeat="(socketId, roomId) in rooms">
+            <div data-ng-click="callReport(roomId)">더 케이 호</div>
+            <span data-ng-bind="status"></span>
+        </div>
+        <a data-ng-href="#">상담</a>
     </div>
-    <a data-ng-href="#">상담</a>
-    <div data-ng-view></div>
+    <div class="right-content">
+        <video id="local" autoplay ></video>
+        <video id="remote" autoplay ></video>
+    </div>
+</div>
 </body>
 <script src="modules/socket.io/socket.io.js"></script>
 <script src="js/disasterApp.js"></script>

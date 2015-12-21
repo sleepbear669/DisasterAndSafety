@@ -27,7 +27,7 @@
         };
 
         var pc;
-        navigator.getUserMedia({video: true, audio: false}, function (localMediaStream) {
+        navigator.getUserMedia({video: true, audio: true}, function (localMediaStream) {
             pc = new webkitRTCPeerConnection(configuration);
             localVideo.src = window.URL.createObjectURL(localMediaStream);
             localVideoStream = localMediaStream;
@@ -67,7 +67,6 @@
             }
         });
         socket.on("end", function () {
-            pc.removeStream(localVideoStream);
             pc.close();
             socket.emit("leaveRoom", $scope.roomId);
         });
